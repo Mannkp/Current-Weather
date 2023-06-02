@@ -38,6 +38,7 @@ const currentWeather = async (latitude , longitude) => {
         console.log(feelsLike);
         console.log(windSpeed);
         console.log(humidity);
+        container.innerHTML = `<h1>${city}</h1>`;
         container.innerHTML += `<h2>Avg. Temperature: ${avgTemp.toPrecision(4)}°C</h2>`;
         container.innerHTML += `<img src="https://openweathermap.org/img/wn/${icon}.png" class="myIcon"/>`;
         container.innerHTML += `<h2>Feels Like: ${feelsLike.toPrecision(4)}°C</h2>`;
@@ -54,8 +55,6 @@ let searchBtn = document.querySelector(".btn");
 searchBtn.addEventListener("click" , async () => {
     city = await input.value;
     console.log(city);
-    container.innerHTML = `<h1>${city}</h1>`;
-    // container.innerHTML += `<h3>${city}</h3>`;
     let {latitude, longitude} = await cityLocation(city);
     console.log("mklat = " , latitude);
     console.log("mklon = " , longitude);
@@ -66,8 +65,6 @@ input.addEventListener("keydown" , async (e) => {
     if (e.code == "Enter") {  //checks whether the pressed key is "Enter"
         city = await input.value;
         console.log(city);
-        container.innerHTML = `<h1>${city}</h1>`;
-        // container.innerHTML += `<h3>${city}</h3>`;
         let {latitude, longitude} = await cityLocation(city);
         console.log("mklat = " , latitude);
         console.log("mklon = " , longitude);
