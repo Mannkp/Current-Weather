@@ -1,0 +1,75 @@
+let city;
+let input = document.querySelector("#inp");
+const container = document.querySelector(".container");
+
+const cityLocation = async (city) => {
+    try{
+        console.log("received city: " , city);
+        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=e5738002c5bea4b0bc71830ac421fe8a`);
+        console.log("response: " , response);
+        const data = await response.json();
+        console.log("data: " , data);
+        latitude = data[0].lat;
+        longitude = data[0].lon;
+        return {latitude, longitude};
+    }
+    catch (error){
+        console.log("Error: " , error);
+    }
+}
+
+const currentWeather = async (latitude , longitude) => {
+    try{
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=e5738002c5bea4b0bc71830ac421fe8a`);
+
+        const data = await res.json();
+        
+        console.log(data);
+
+        let desc = data.weather[0].description;
+        let icon = data.weather[0].icon;
+        let avgTemp = (data.main.temp) - 273.15;
+        let feelsLike = (data.main.feels_like) - 273.15;
+        let humidity = data.main.humidity;
+        let windSpeed = data.wind.speed;
+        console.log(desc);
+        console.log(avgTemp);
+        console.log(feelsLike);
+        console.log(windSpeed);
+        console.log(humidity);
+        container.innerHTML += `<h2>Avg. Temperature: ${avgTemp.toPrecision(4)}°C</h2>`;
+        container.innerHTML += `<img src="https://openweathermap.org/img/wn/${icon}.png" class="myIcon"/>`;
+        container.innerHTML += `<h2>Feels Like: ${feelsLike.toPrecision(4)}°C</h2>`;
+        container.innerHTML += `<h2>${desc}</h2>`;
+        container.innerHTML += `<h2>Wind Speed: ${windSpeed.toPrecision(4)} m/s</h2>`;
+        container.innerHTML += `<h2>Humidity: : ${humidity.toPrecision(4)}%</h2>`;
+    }
+    catch(err){
+        console.log("Error: " , err);
+    }
+};
+
+let searchBtn = document.querySelector(".btn");
+searchBtn.addEventListener("click" , async () => {
+    city = await input.value;
+    console.log(city);
+    container.innerHTML = `<h1>${city}</h1>`;
+    // container.innerHTML += `<h3>${city}</h3>`;
+    let {latitude, longitude} = await cityLocation(city);
+    console.log("mklat = " , latitude);
+    console.log("mklon = " , longitude);
+    currentWeather(latitude,longitude);
+});
+
+input.addEventListener("keydown" , async (e) => {
+    if (e.code == "Enter") {  //checks whether the pressed key is "Enter"
+        city = await input.value;
+        console.log(city);
+        container.innerHTML = `<h1>${city}</h1>`;
+        // container.innerHTML += `<h3>${city}</h3>`;
+        let {latitude, longitude} = await cityLocation(city);
+        console.log("mklat = " , latitude);
+        console.log("mklon = " , longitude);
+        currentWeather(latitude,longitude);
+    }
+});

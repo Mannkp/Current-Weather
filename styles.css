@@ -1,0 +1,66 @@
+*{
+    font-family: 'Hind', sans-serif;
+    top: 0;
+    margin: 0;
+}
+.main{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background:no-repeat url('./mountainBG.jpg');
+    background-size: cover;
+}
+.container{
+    box-sizing: border-box;
+    height: 60vh;
+    width: 25vw;
+    border-radius: 10px;
+    padding: 2vh 2vw;
+    background-color: rgba(0,0,0,0.5);
+    margin: 1vh auto;
+    color: white;
+}
+.search{
+    box-sizing: border-box;
+    height: auto;
+    width: fit-content;
+    display: flex;
+    margin:10vh auto 0 auto;
+}
+.btn , .myIcon{
+    height: auto;
+    width: 35px;
+    margin-left: 10px;
+}
+.btn, #inp{
+    background-color: rgba(0,0,0,0.5);
+    border: 0;
+    border-radius: 10px;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.btn > img{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+#inp{
+    height: 40px;
+    width: fit-content;
+    padding: 2.5px 10px;
+    color: white;
+    font-size: 1.2rem;
+}
+h1{
+    font-size: 2.5rem;
+}
+h2{
+    margin: 1.5vh auto;
+}
+@media screen and (max-width: 500px){
+    .container{
+        height: 70vh;
+        width: 90vw;
+    }
+}
