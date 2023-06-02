@@ -2,26 +2,9 @@ let city;
 let input = document.querySelector("#inp");
 const container = document.querySelector(".container");
 
-//This is a new api and may produce in accurate information, so using simple way around using city names.
-const cityLocation = async (city) => {
+const currentWeather = async (city) => {
     try{
-        console.log("received city: " , city);
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=e5738002c5bea4b0bc71830ac421fe8a`);
-        console.log("response: " , response);
-        const data = await response.json();
-        console.log("data: " , data);
-        latitude = data[0].lat;
-        longitude = data[0].lon;
-        return {latitude, longitude};
-    }
-    catch (error){
-        console.log("Error: " , error);
-    }
-}
-
-const currentWeather = async (latitude , longitude) => {
-    try{
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=e5738002c5bea4b0bc71830ac421fe8a`);
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e5738002c5bea4b0bc71830ac421fe8a`);
 
         const data = await res.json();
         
@@ -55,11 +38,7 @@ searchBtn.addEventListener("click" , async () => {
     city = await input.value;
     console.log(city);
     container.innerHTML = `<h1>${city}</h1>`;
-    // container.innerHTML += `<h3>${city}</h3>`;
-    let {latitude, longitude} = await cityLocation(city);
-    console.log("mklat = " , latitude);
-    console.log("mklon = " , longitude);
-    currentWeather(latitude,longitude);
+    currentWeather(city);
 });
 
 input.addEventListener("keydown" , async (e) => {
@@ -67,10 +46,6 @@ input.addEventListener("keydown" , async (e) => {
         city = await input.value;
         console.log(city);
         container.innerHTML = `<h1>${city}</h1>`;
-        // container.innerHTML += `<h3>${city}</h3>`;
-        let {latitude, longitude} = await cityLocation(city);
-        console.log("mklat = " , latitude);
-        console.log("mklon = " , longitude);
-        currentWeather(latitude,longitude);
+        currentWeather(city);
     }
 });
