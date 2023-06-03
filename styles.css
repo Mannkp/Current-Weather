@@ -58,6 +58,9 @@ h1{
 h2{
     margin: 1.5vh auto;
 }
+.myIcon{
+    background-color: rgba(255,255,255,0.5);
+}
 @media screen and (max-width: 500px){
     .container{
         height: 70vh;
