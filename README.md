@@ -14,3 +14,5 @@ JavaScript concepts used:
 please note: in the first version of the app, I used "Geocoding API" to generate Longitudes and Latitudes of City, and then pass it in API call, but it was unable to provide weather for cities in my country (INDIA);
              what I mean is that if I search for "SURAT", it would show me weather of Surat in Australia!
 -> so I added another script named as simpleWayScript.js wherein I have passed city name as query in API Call.
+
+Therefore, you can try both script files and get weather reports, all one need to do is to uncomment one script file linked to HTML page and comment out other linked file.
