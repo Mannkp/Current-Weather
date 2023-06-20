@@ -4,16 +4,22 @@
     margin: 0;
 }
 .main{
-    position: fixed;
-    height: 100vh;
+    box-sizing: border-box;
+    min-height: 100vh;
     width: 100vw;
     background:no-repeat url('./mountainBG.jpg');
     background-size: cover;
 }
+.nav h1{
+    color: rgba(0,0,0,0.75);
+    letter-spacing: 0.2rem;
+    text-align: center;
+    font-size: 4rem;
+}
 .container{
     box-sizing: border-box;
-    height: 60vh;
-    width: 25vw;
+    height: fit-content;
+    width: 30vw;
     border-radius: 10px;
     padding: 2vh 2vw;
     background-color: rgba(0,0,0,0.5);
@@ -21,11 +27,11 @@
     color: white;
 }
 .search{
+    margin: 10px ;
     box-sizing: border-box;
-    height: auto;
-    width: fit-content;
+    margin-top: 2vh;
     display: flex;
-    margin:10vh auto 0 auto;
+    justify-content: center;
 }
 .btn , .myIcon{
     height: auto;
@@ -46,24 +52,40 @@
     width: 100%;
 }
 #inp{
-    height: 40px;
-    width: fit-content;
+    min-height: 40px;
+    /* width: fit-content; */
     padding: 2.5px 10px;
     color: white;
     font-size: 1.2rem;
 }
 h1{
     font-size: 2.5rem;
+    text-align: center;
 }
 h2{
-    margin: 1.5vh auto;
+    /* margin: 1.5vh auto; */
+    line-height: 3.5rem;
 }
 .myIcon{
     background-color: rgba(255,255,255,0.5);
 }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 1000px){
     .container{
-        height: 70vh;
+        height: fit-content;
         width: 90vw;
+        padding: 0 20px;
+    }
+    .nav h1, h1{
+        font-size: 3rem;
+    }
+    h2{
+        font-size: 1.5rem;
+    }
+    .btn , .myIcon{
+        width: 30px;
+        margin-left: 5px;
+    }
+    #inp{
+        width: 70vw;
     }
 }
