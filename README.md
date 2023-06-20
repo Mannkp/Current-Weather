@@ -9,6 +9,7 @@ JavaScript concepts used:
 3) Await
 4) DOM Manipulation
 5) addEventListener
+6) working with Json
 
 
 please note: in the first version of the app, I have used "Geocoding API" to generate Longitudes and Latitudes of City, and then pass it in API call to provide weather cities in INDIA;
