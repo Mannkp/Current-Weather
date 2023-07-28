@@ -1,0 +1,91 @@
+*{
+    font-family: 'Hind', sans-serif;
+    top: 0;
+    margin: 0;
+}
+.main{
+    box-sizing: border-box;
+    min-height: 100vh;
+    width: 100vw;
+    background:no-repeat url('./mountainBG.jpg');
+    background-size: cover;
+}
+.nav h1{
+    color: rgba(0,0,0,0.75);
+    letter-spacing: 0.2rem;
+    text-align: center;
+    font-size: 4rem;
+}
+.container{
+    box-sizing: border-box;
+    height: fit-content;
+    width: 30vw;
+    border-radius: 10px;
+    padding: 2vh 2vw;
+    background-color: rgba(0,0,0,0.5);
+    margin: 1vh auto;
+    color: white;
+}
+.search{
+    margin: 10px ;
+    box-sizing: border-box;
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+}
+.btn , .myIcon{
+    height: auto;
+    width: 35px;
+    margin-left: 10px;
+}
+.btn, #inp{
+    background-color: rgba(0,0,0,0.5);
+    border: 0;
+    border-radius: 10px;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.btn > img{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+#inp{
+    min-height: 40px;
+    /* width: fit-content; */
+    padding: 2.5px 10px;
+    color: white;
+    font-size: 1.2rem;
+}
+h1{
+    font-size: 2.5rem;
+    text-align: center;
+}
+h2{
+    /* margin: 1.5vh auto; */
+    line-height: 3.5rem;
+}
+.myIcon{
+    background-color: rgba(255,255,255,0.5);
+}
+@media screen and (max-width: 1000px){
+    .container{
+        height: fit-content;
+        width: 90vw;
+        padding: 0 20px;
+    }
+    .nav h1, h1{
+        font-size: 3rem;
+    }
+    h2{
+        font-size: 1.5rem;
+    }
+    .btn , .myIcon{
+        width: 30px;
+        margin-left: 5px;
+    }
+    #inp{
+        width: 70vw;
+    }
+}
